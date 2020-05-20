@@ -1,0 +1,6 @@
+{
+	"stage": "../res/imagen.png",
+	"robot": "../conf/robot.json",
+	"controller": "../conf/controller-pathplanning.json",
+	"gui": true
+}
