@@ -6,10 +6,8 @@ def checkObst(pos_x, pos_y, grid):
     
 
 def lineOfSigth(s1, s2, grid):
-    x0=s1.grid_point[0]
-    y0=s1.grid_point[1]
-    x1=s2.grid_point[0]
-    y1=s2.grid_point[1]
+    x0, y0 = s1.grid_point
+    x1, y1 = s2.grid_point
 
     dy=y1-y0
     dx=x1-x0
@@ -142,17 +140,24 @@ def thetaStar(start, goal, grid, heur='naive'):
                 continue
             #Otherwise if it is already in the open set
             if node in openset:                
-                updateVertex(current,node,openset,closedset,heur,goal,grid)                
+                if lineOfSigth(current.parent, node, grid):
+                    newParentG = current.parent.G + current.parent.move_cost(node)      
+                    if newParentG < node.G:
+                        node.G=newParentG
+                        node.parent = current.newParent
+                else:
+                    newG =current.G + current.move_cost(node)
+                    if node.G > newG:
+                        node.G = newG
+                        node.parent=current
             else:
-                if current.parent is not None:
-                    if lineOfSigth(current.parent, node, grid):
-                        #If it isn't in the open set, calculate the G and H score for the node
-                        node.G = current.G + current.move_cost(node)
-                        node.H = pp.heuristic[heur](node, goal)
-                        #Set the parent to our current item
-                        node.parent = current
-                        #Add it to the set
-                        openset.add(node)
+                #If it isn't in the open set, calculate the G and H score for the node
+                node.G = current.G + current.move_cost(node)
+                node.H = pp.heuristic[heur](node, goal)
+                #Set the parent to our current item
+                node.parent = current
+                #Add it to the set
+                openset.add(node)
     #Throw an exception if there is no path
     raise ValueError('No Path Found')
 
