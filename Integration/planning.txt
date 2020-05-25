@@ -1,0 +1,14 @@
+
+; Time 0.06
+; ParsingTime 0.00
+; NrActions 6
+; MakeSpan
+; MetricValue 31.006
+; PlanningTechnique Modified-FF(enforced hill-climbing search) as the subplanner
+
+0.001: (UNDOCK-UGV FOLLOWER P0610) [2.0000]
+0.002: (UNDOCK-UGV LEADER P0610) [2.0000]
+2.003: (MOVE FOLLOWER P1002 P0509 N0) [24.0000]
+2.004: (MOVE LEADER P0610 P1613 N0) [26.0000]
+26.005: (TAKE-PICTURE FOLLOWER P0509 P_0 T_0) [3.0000]
+28.006: (TAKE-PICTURE LEADER P1613 P_0 T_0) [3.0000]
