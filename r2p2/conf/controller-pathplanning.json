@@ -12,7 +12,7 @@
 				  [132, 305], [91, 308]],
 
 	"algorithm": "Theta*",
-	"heuristic": "naive",
+	"heuristic": "euclidean",
 	"start": [2,2],
 	"goal": [38,38]
 }
