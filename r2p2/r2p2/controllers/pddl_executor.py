@@ -211,6 +211,8 @@ class PDDL_Executor(Sequential_PID_Controller):
         shape = u.npdata.shape
         step_x = shape[0]/step
         step_y = shape[1]/step
+        algo='A*'
+        heur='manhattan'
         self.goal = pp.run_path_planning(step,
                                          start=(int(self.robot.x/step_x), int(self.robot.y/step_y)),
                                          finish=(int(dst[0]), int(dst[1])),
